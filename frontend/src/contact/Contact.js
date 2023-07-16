@@ -18,7 +18,7 @@ const Contact = () => {
     e.preventDefault();
 
     axios
-      .post("/api/send-email", { name, email, message })
+      .post("http://localhost:8080/api/send-email", { name, email, message })
       .then((response) => {
         console.log(response.data);
         // Optionally, you can show a success message to the user

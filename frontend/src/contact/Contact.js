@@ -1,12 +1,13 @@
-
 import styled from "styled-components";
 import axios from "axios";
-import { Container, Row, Col, Form  } from "react-bootstrap";
-import { AiFillGithub, AiFillInstagram, AiOutlineTwitter } from "react-icons/ai";
+import { Container, Row, Col, Form } from "react-bootstrap";
+import {
+  AiFillGithub,
+  AiFillInstagram,
+  AiOutlineTwitter,
+} from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useState } from "react";
-
-
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -17,7 +18,7 @@ const Contact = () => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:8080/api/send-email", { name, email, message })
+      .post("/api/send-email", { name, email, message })
       .then((response) => {
         console.log(response.data);
         // Optionally, you can show a success message to the user
@@ -79,8 +80,10 @@ const Contact = () => {
                 </a>
               </li>
             </ul>
+            <div style={{ marginTop: "23px" }}>Or <span style={{ color:"#c066cd"}} >Send</span> Message <span style={{ color:"#c066cd"}} >↓</span> </div>
           </Col>
         </Row>
+
         <StyledContactForm>
           <Form onSubmit={handleSubmit}>
             <label></label>
@@ -114,13 +117,13 @@ const Contact = () => {
   );
 };
 
-
 export default Contact;
 const StyledContactForm = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
+  margin-top: 40px;
   form {
     width: 400px;
     display: flex;

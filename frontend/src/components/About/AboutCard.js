@@ -28,6 +28,7 @@ function AboutCard() {
           <p style={{ color: "rgb(155 126 172)" }}>
             "Every failure gives a chance to start a new and afresh life!"{" "}
           </p>
+         
           <footer className="blockquote-footer">Praphool</footer>
         </blockquote>
       </Card.Body>

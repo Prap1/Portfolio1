@@ -386,7 +386,9 @@ button:focus {
   color: #87209e;
   box-shadow: 0 0 5px #87209e;
   text-shadow: 0 0 2px #87209e;
+  
 }
+
 
 .social-icons {
   display: inline-block !important;
@@ -740,4 +742,12 @@ button:focus {
 }
 .fork-btn-inner::after {
   display: none !important;
+}
+@keyframes upDownAnimation {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }

@@ -32,7 +32,7 @@ function Footer() {
               </a>
             </li>
             <li className="social-icons">
-              <a
+              <a 
                 href="https://twitter.com/Praphoo18178269"
                 style={{ color: "white" }}
                 target="_blank" 
@@ -42,7 +42,7 @@ function Footer() {
               </a>
             </li>
             <li className="social-icons">
-              <a
+              <a 
                 href="https://www.linkedin.com/in/praphool-kumar-975868194/"
                 style={{ color: "white" }}
                 target="_blank" 

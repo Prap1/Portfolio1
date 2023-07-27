@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import leaf from "../../Assets/Projects/leaf.png";
-import emotion from "../../Assets/Projects/emotion.png";
-import editor from "../../Assets/Projects/codeEditor.png";
-import chatify from "../../Assets/Projects/chatify.png";
-import suicide from "../../Assets/Projects/suicide.png";
-import bitsOfCode from "../../Assets/Projects/blog.png";
-
+import portfolio from "../../Assets/Projects/portfolio.png";
+import eccomerce from "../../Assets/eccomerce.png";
+import blog from "../../Assets/Projects/blog.jpeg";
+import doctor from "../../Assets/doctorappoint.png";
+import { useInView } from "react-intersection-observer"; 
+// Import the hook
+import Zoom from 'react-reveal/Zoom';
 function Projects() {
+  const [ref, inView] = useInView({ triggerOnce: true });
+  const [projectsVisible, setProjectsVisible] = useState(false);
+
+  useEffect(() => {
+    if (inView) {
+      setProjectsVisible(true);
+    }
+  }, [inView]);
+
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -20,65 +29,69 @@ function Projects() {
         <p style={{ color: "white" }}>
           Here are a few projects I've worked on recently.
         </p>
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Zoom bottom >
+        <Row
+          ref={ref}
+          style={{ justifyContent: "center", paddingBottom: "10px" }}
+        >
           <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={chatify}
-              isBlog={false}
-              title="Chatify"
-              description="I developed a full-stack e-commerce application with features including email authentication, product reviews and comments, payment integration, filters, and an admin page for managing products and categories. Implemented using React, Node.js, Express, and MongoDB, this project showcases my skills in building robust and scalable web applications."
-              ghLink="https://github.com/Prap1/ShopKart"
-              // demoLink="https://chatify-49.web.app/"
-            />
+            <div
+              className={`project-card-inner ${projectsVisible ? "slide-in" : ""}`}
+            >
+              <ProjectCard
+                imgPath={eccomerce}
+                isBlog={false}
+                title="ShopKart"
+                description="I developed a full-stack e-commerce application with features including email authentication, product reviews and comments, payment integration, filters, and an admin page for managing products and categories. Implemented using React, Node.js, Express, and MongoDB."
+                ghLink="https://github.com/Prap1/ShopKart"
+              />
+            </div>
           </Col>
 
           <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={bitsOfCode}
-              isBlog={false}
-              title="Bits-0f-C0de"
-              description="I designed a doctor appointment system enabling users to register, check doctor availability, and book appointments. Developed user and admin pages, incorporating notification functionality. Demonstrates proficiency in user management, data flow, and creating a seamless experience for scheduling and managing doctor appointments. Implemented using React, Node.js, Express, and MongoDB."
-              ghLink="https://github.com/Prap1/DoctorAppointment"
-              // demoLink="https://blogs.soumya-jit.tech/"
-            />
+            <div
+              className={`project-card-inner ${projectsVisible ? "slide-in" : ""}`}
+            >
+              <ProjectCard
+                imgPath={doctor}
+                isBlog={false}
+                title="DoctorAppointment"
+                description="I designed a doctor appointment system enabling users to register, check doctor availability, and book appointments. Developed user and admin pages, incorporating notification functionality. Demonstrates proficiency in user management, data flow, and creating a seamless experience for scheduling and managing doctor appointments. Implemented using React, Node.js, Express, and MongoDB."
+                ghLink="https://github.com/Prap1/DoctorAppointment"
+              />
+            </div>
           </Col>
 
           <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={editor}
-              isBlog={false}
-              title="Editor.io"
-              description="Developed a feature-rich blog website backend using Java, Spring Boot, MySQL, and Spring Security. Empowered users to create, delete, and update their blog posts while ensuring data integrity and security. Implemented an admin module to manage users effectively. "
-              ghLink="https://github.com/Prap1/Blog-backend"
-              // demoLink="https://editor.soumya-jit.tech/"              
-            />
+            <div
+              className={`project-card-inner ${projectsVisible ? "slide-in" : ""}`}
+            >
+              <ProjectCard
+                imgPath={blog}
+                isBlog={false}
+                title="Blog"
+                description="Developed a feature-rich blog website backend using Java, Spring Boot, MySQL, and Spring Security. Empowered users to create, delete, and update their blog posts while ensuring data integrity and security. Implemented an admin module to manage users effectively."
+                ghLink="https://github.com/Prap1/Blog-backend"
+              />
+            </div>
           </Col>
 
           <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={leaf}
-              isBlog={false}
-              title="Plant AI"
-              description="Developed a ReactJS and Node.js based portfolio web application showcasing projects, an about section, and a resume section. Integrated a contact form for users to send messages, utilizing email functionality."
-              ghLink="https://github.com/Prap1/Portfolio1"
-              // demoLink="https://plant49-ai.herokuapp.com/"
-            />
+            <div
+              className={`project-card-inner ${projectsVisible ? "slide-in" : ""}`}
+            >
+              <ProjectCard
+                imgPath={portfolio}
+                isBlog={false}
+                title="Portfolio"
+                description="Developed a ReactJS and Node.js based portfolio web application showcasing projects, an about section, and a resume section. Integrated a contact form for users to send messages, utilizing email functionality."
+                ghLink="https://github.com/Prap1/Portfolio1"
+              />
+            </div>
           </Col>
-
-          <Col md={4} className="project-card">
-            <ProjectCard
-              imgPath={suicide}
-              isBlog={false}
-              title="Photo Editor App"
-              description="
-              Developed an Android photo editor app using Android Studio, enabling users to edit and enhance their photos with filters. Integrated Google Ads for monetization. "
-              ghLink="https://github.com/Prap1/EditorApp"
-              // demoLink="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley" <--------Please include a demo link here
-            />
-          </Col>
-
          
         </Row>
+        </Zoom>
       </Container>
     </Container>
   );

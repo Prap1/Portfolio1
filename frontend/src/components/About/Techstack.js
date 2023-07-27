@@ -12,9 +12,11 @@ import {
 import {
   SiMysql,
 } from "react-icons/si";
-
+import Fade from 'react-reveal/Fade';
 function Techstack() {
+  const animationDelay = 200;
   return (
+    <Fade left delay={animationDelay}>
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
       <Col xs={4} md={2} className="tech-icons">
         <DiJavascript1 />
@@ -38,6 +40,7 @@ function Techstack() {
         <SiMysql />
       </Col>
     </Row>
+    </Fade>
   );
 }
 

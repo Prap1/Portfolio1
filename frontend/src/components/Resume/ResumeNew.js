@@ -6,6 +6,7 @@ import pdf from "../../Assets/Praphool Kumar.pdf";
 import { AiOutlineDownload } from "react-icons/ai";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import Shake from 'react-reveal/Shake';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 
 function ResumeNew() {
@@ -27,6 +28,7 @@ function ResumeNew() {
       <Container fluid className="resume-section">
         <Particle />
         <Row style={{ justifyContent: "center", position: "relative" }}>
+        <Shake>
           <Button
             variant="primary"
             onClick={handleDownload}
@@ -35,6 +37,7 @@ function ResumeNew() {
             <AiOutlineDownload />
             &nbsp;Download CV
           </Button>
+          </Shake>
         </Row>
 
         <Row className="resume">
@@ -44,6 +47,7 @@ function ResumeNew() {
         </Row>
 
         <Row style={{ justifyContent: "center", position: "relative" }}>
+          <Shake>
           <Button
             variant="primary"
             onClick={handleDownload}
@@ -52,6 +56,7 @@ function ResumeNew() {
             <AiOutlineDownload />
             &nbsp;Download CV
           </Button>
+          </Shake>
         </Row>
       </Container>
     </div>

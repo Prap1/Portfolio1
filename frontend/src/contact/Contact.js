@@ -1,13 +1,13 @@
-import styled from "styled-components";
-import axios from "axios";
+import React from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import {
-  AiFillGithub,
-  AiFillInstagram,
-  AiOutlineTwitter,
-} from "react-icons/ai";
+import { AiFillGithub, AiFillInstagram, AiOutlineTwitter } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { useState } from "react";
+import Slide from "react-reveal/Slide";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import styled from "styled-components";
+import axios from "axios";
 
 const Contact = () => {
   const [name, setName] = useState("");
@@ -21,95 +21,112 @@ const Contact = () => {
       .post("http://localhost:8080/api/send-email", { name, email, message })
       .then((response) => {
         console.log(response.data);
-        // Optionally, you can show a success message to the user
+        toast.success("Message sent successfully!"); // Show success toast
+        setName("");
+        setEmail("");
+        setMessage("");
       })
       .catch((error) => {
         console.log(error);
-        // Optionally, you can show an error message to the user
+        toast.error("Failed to send message."); // Show error toast
       });
   };
 
   return (
     <Container fluid className="home-about-section" id="about">
+      
       <Container>
-        <Row>
-          <Col md={12} className="home-about-social">
-            <h1>FIND ME ON</h1>
-            <p>
-              Feel free to <span className="purple">connect </span>with me
-            </p>
-            <ul className="home-about-social-links">
-              <li className="social-icons">
-                <a
-                  href="https://github.com/Prap1"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiFillGithub />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://twitter.com/Praphoo18178269"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <AiOutlineTwitter />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://www.linkedin.com/in/praphool-kumar-975868194/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour  home-social-icons"
-                >
-                  <FaLinkedinIn />
-                </a>
-              </li>
-              <li className="social-icons">
-                <a
-                  href="https://instagram.com/praphool.programmer?igshid=NGExMmI2YTkyZg=="
-                  target="_blank"
-                  rel="noreferrer"
-                  className="icon-colour home-social-icons"
-                >
-                  <AiFillInstagram />
-                </a>
-              </li>
-            </ul>
-            <div style={{ marginTop: "23px" }}>Or <span style={{ color:"#c066cd"}} >Send</span> Message <span style={{ color:"#c066cd"}} >↓</span> </div>
-          </Col>
-        </Row>
-
+        <Slide top>
+          <Row>
+            <Col md={12} className="home-about-social">
+              <h1>FIND ME ON</h1>
+              <p>
+                Feel free to <span className="purple">connect </span>with me
+              </p>
+              <ul className="home-about-social-links">
+                <li className="social-icons">
+                  <a
+                    href="https://github.com/Prap1"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="icon-colour  home-social-icons"
+                  >
+                    <AiFillGithub />
+                  </a>
+                </li>
+                <li className="social-icons">
+                  <a
+                    href="https://twitter.com/Praphoo18178269"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="icon-colour  home-social-icons"
+                  >
+                    <AiOutlineTwitter />
+                  </a>
+                </li>
+                <li className="social-icons">
+                  <a
+                    href="https://www.linkedin.com/in/praphool-kumar-975868194/"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="icon-colour  home-social-icons"
+                  >
+                    <FaLinkedinIn />
+                  </a>
+                </li>
+                <li className="social-icons">
+                  <a
+                    href="https://instagram.com/praphool.programmer?igshid=NGExMmI2YTkyZg=="
+                    target="_blank"
+                    rel="noreferrer"
+                    className="icon-colour home-social-icons"
+                  >
+                    <AiFillInstagram />
+                  </a>
+                </li>
+              </ul>
+              <div style={{ marginTop: "23px" }}>
+                Or <span style={{ color: "#c066cd" }}>Send</span> Message{" "}
+                <span style={{ color: "#c066cd" }}>↓</span>{" "}
+              </div>
+            </Col>
+          </Row>
+        </Slide>
         <StyledContactForm>
           <Form onSubmit={handleSubmit}>
             <label></label>
-            <input
-              type="text"
-              placeholder="Name"
-              name="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
+            <Slide left>
+              <input
+                type="text"
+                placeholder="Name"
+                name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Slide>
             <label></label>
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <Slide left>
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Slide>
             <label></label>
-            <textarea
-              placeholder="Message"
-              name="message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-            />
-            <input type="submit" value="Send" />
+            <Slide left>
+              <textarea
+                placeholder="Message"
+                name="message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+            </Slide>
+            <Slide left>
+              <input type="submit" value="Send" />
+            </Slide>
+            <ToastContainer />
           </Form>
         </StyledContactForm>
       </Container>

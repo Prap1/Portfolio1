@@ -5,6 +5,7 @@ import { CgWebsite } from "react-icons/cg";
 import { BsGithub } from "react-icons/bs";
 import { useInView } from "react-intersection-observer"; // Import the hook
 import Zoom from 'react-reveal/Zoom';
+import { PiArrowSquareOutBold } from "react-icons/pi" ; 
 
 function ProjectCards(props) {
   const [ref, inView] = useInView({ triggerOnce: true });
@@ -41,7 +42,7 @@ function ProjectCards(props) {
               target="_blank"
               style={{ marginLeft: "10px" }}
             >
-              <CgWebsite /> &nbsp;
+              <PiArrowSquareOutBold /> &nbsp;
               {"Demo"}
             </Button>
           )}

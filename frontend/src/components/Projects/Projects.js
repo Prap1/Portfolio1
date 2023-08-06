@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
 import portfolio from "../../Assets/Projects/portfolio.png";
+import weather from "../../Assets/Projects/weather.png"
 import eccomerce from "../../Assets/eccomerce.png";
 import blog from "../../Assets/Projects/blog.jpeg";
 import doctor from "../../Assets/doctorappoint.png";
@@ -81,11 +82,27 @@ function Projects() {
               className={`project-card-inner ${projectsVisible ? "slide-in" : ""}`}
             >
               <ProjectCard
+                imgPath={weather}
+                isBlog={false}
+                title="Weather App"
+                description="Engage with my Kotlin-powered weather app. Real-time temperature, humidity, sunrise, sunset, and wind speed data seamlessly delivered. With a user-friendly interface, leverage the dynamic search bar to access city-specific weather updates. This project showcases my prowess in Kotlin and app development, offering accurate weather insights with a touch of interactivity."
+                ghLink="https://github.com/Prap1/weatherApp"
+                demoLink="https://drive.google.com/file/d/1nJfZweeqwiS9kRZ08aMCddZIqHO5JZ83/view?usp=sharing"
+              />
+            </div>
+          </Col>
+
+          <Col md={4} className="project-card">
+            <div
+              className={`project-card-inner ${projectsVisible ? "slide-in" : ""}`}
+            >
+              <ProjectCard
                 imgPath={portfolio}
                 isBlog={false}
                 title="Portfolio"
                 description="Developed a ReactJS and Node.js based portfolio web application showcasing projects, an about section, and a resume section. Integrated a contact form for users to send messages, utilizing email functionality."
                 ghLink="https://github.com/Prap1/Portfolio1"
+                demoLink="https://charming-ray-shoe.cyclic.app/"
               />
             </div>
           </Col>

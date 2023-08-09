@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
+import myImg from "../../Assets/pk.png";
 import Tilt from "react-parallax-tilt";
 import Fade from 'react-reveal/Fade'; 
 import {
@@ -58,7 +58,7 @@ function Home2() {
           </Col>
           <Col md={4} className="myAvtar">
             <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
+              <img src={myImg}  className="img-fluid" alt="avatar" style={{ width: '250px', height: '250px' }} />
             </Tilt>
           </Col>
         </Row>

@@ -16,22 +16,32 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
+    if (!name || !email || !message) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+  
     axios
-      .post("http://localhost:8080/api/send-email", { name, email, message })
+      .post("/api/send-email", { name, email, message })
       .then((response) => {
         console.log(response.data);
-        toast.success("Message sent successfully!"); // Show success toast
+        toast.success("Message sent successfully!");
         setName("");
         setEmail("");
         setMessage("");
       })
       .catch((error) => {
         console.log(error);
-        toast.error("Failed to send message."); // Show error toast
+        toast.error("Failed to send message.");
       });
   };
-
+ 
+  
+  
+  
+  
+  
   return (
     <Container fluid className="home-about-section" id="about">
       
@@ -124,7 +134,7 @@ const Contact = () => {
               />
             </Slide>
             <Slide left>
-              <input type="submit" value="Send" />
+              <input type="submit" className="but" value="Send" />
             </Slide>
             <ToastContainer />
           </Form>
@@ -186,6 +196,9 @@ const StyledContactForm = styled.div`
       background: rgb(249, 105, 14);
       color: white;
       border: none;
+    }
+    .but:hover{
+      transform: translateY(5px);
     }
   }
 `;
